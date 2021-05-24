@@ -6,5 +6,4 @@ public interface Launchable {
 
     // Methods
     void run();
-    boolean launched();
 }

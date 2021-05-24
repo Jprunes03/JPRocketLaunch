@@ -3,8 +3,6 @@ package edu.sla;
 class Rocket implements Launchable {
     private int launchTime;
     private int id;
-    private boolean canLaunch;
-    private boolean launched;
 
     private boolean recursiveMode;
 
@@ -12,13 +10,7 @@ class Rocket implements Launchable {
         id = rocketId;
         // launchTime is random amount between 2 and 10 seconds
         launchTime = 2 + (int)(Math.random() * 8);
-        canLaunch = false;
-        launched = false;
         recursiveMode = mode;
-    }
-
-    public boolean launched() {
-        return launched;
     }
 
     private void countdownIterative() {
@@ -31,7 +23,6 @@ class Rocket implements Launchable {
                 Thread.currentThread().interrupt();
             }
         }
-        canLaunch = true;
     }
 
     private void countdownRecursive(int count) {
@@ -44,18 +35,11 @@ class Rocket implements Launchable {
                 Thread.currentThread().interrupt();
             }
             countdownRecursive(count - 1);
-        } else {
-            canLaunch = true;
         }
     }
 
     private void launch() {
-        if (canLaunch) {
-            System.out.println("Rocket " + id + " launching!!!!!!");
-            launched = true;
-        } else {
-            System.out.println("ERROR: Rocket " + id + " can't launch BEFORE countdown");
-        }
+        System.out.println("Rocket " + id + " launching!!!!!!");
         System.out.println("");
     }
 

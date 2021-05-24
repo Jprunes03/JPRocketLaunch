@@ -13,11 +13,6 @@ public class Main {
         for (int i = 0; i < numRockets; i++) {
             Launchable rocket = new Rocket(i+1, recursiveMode);
             rocket.run();
-
-            // DON'T continue launching more rockets until this rocket is launched
-            if (!rocket.launched()) {
-                System.out.println("ERROR: Continuing to next rocket without launching current rocket!");
-            }
         }
 
         System.out.println("All Rockets launched successfully!");
